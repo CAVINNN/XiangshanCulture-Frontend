@@ -106,15 +106,6 @@
         ...mapState(['isLogin']),
         ...mapGetters(['loginState'])
       },
-      // mounted() {
-      //   this.$ajax.get(this.appPath + '/admin/getToken')
-      //     .then(res => {
-      //       console.log(res)
-      //     })
-      //     .catch(error => {
-      //       console.log(error);
-      //     });
-      // },
       methods: {
         ...mapActions(['login', 'logout']),
         regDialog() {
@@ -125,6 +116,7 @@
         register() {
           this.$refs.regForm.validate((valid) => {
             if (valid) {
+              this.$Loading.service({ fullscreen: true, background: 'rgba(0, 0, 0, 0.8)' });
               let now = new Date();
               this.$ajax.post(this.appPath + '/admin/register', {
                 userName: this.registerData.username,
@@ -149,8 +141,13 @@
                     });
                     this.$refs.regForm.resetFields();
                   }
+                  this.$Loading.service().close();
                 })
                 .catch(error => {
+                  this.$Loading.service().close();
+                  this.$alert('注册失败！', '错误', {
+                    confirmButtonText: '确定',
+                  });
                   console.log(error);
                 });
 
@@ -181,6 +178,7 @@
               type: 'error'
             });
           } else {
+            this.$Loading.service({ fullscreen: true, background: 'rgba(0, 0, 0, 0.8)' });
             this.$ajax.post(this.appPath + '/admin/login', {
               userName: this.loginData.username,
               userPassword: this.loginData.password
@@ -193,7 +191,9 @@
                     type: 'success'
                   });
                   this.login({});
+                  this.$Loading.service().close();
                 } else {
+                  this.$Loading.service().close();
                   this.$message({
                     showClose: true,
                     message: res.data.message,
@@ -202,6 +202,10 @@
                 }
               })
               .catch(error => {
+                this.$Loading.service().close();
+                this.$alert('登录失败！', '错误', {
+                  confirmButtonText: '确定',
+                });
                 console.log(error);
               });
           }

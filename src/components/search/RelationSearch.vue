@@ -24,6 +24,7 @@
         }
       },
       mounted() {
+        this.$Loading.service({ fullscreen: true, background: 'rgba(0, 0, 0, 0.8)' });
         this.$ajax.get(this.appPath + '/getHistoriesByType?type=relation')
           .then(res => {
             let tableData = [];
@@ -67,7 +68,7 @@
               obj.historyId = val.historyId;
               tableData.push(obj);
             });
-
+            this.$Loading.service().close();
             this.$emit("listenHistories", tableData);
           })
           .catch(error => {
@@ -75,6 +76,7 @@
             this.$alert('获取历史记录失败！', '错误', {
               confirmButtonText: '确定',
             });
+            this.$Loading.service().close();
           });
       },
       methods: {
@@ -101,12 +103,14 @@
           this.doSearch(this.keyword1, this.keyword2)
         },
         doSearch(keyword1, keyword2){
+          this.$Loading.service({ fullscreen: true, background: 'rgba(0, 0, 0, 0.8)' });
           this.$ajax.get(this.appPath + '/queryForRelation?individualName1=' + keyword1 + '&individualName2=' + keyword2)
             .then(res => {
               if (res.data.data.queryResults === null) {
                 this.$alert('请输入正确的关键词', '无此关键词数据', {
                   confirmButtonText: '确定',
                 });
+                this.$Loading.service().close();
               } else {
                 // 处理历史记录
                 let now = new Date();
@@ -167,6 +171,7 @@
                         this.$alert('更新历史记录失败！', '错误', {
                           confirmButtonText: '确定',
                         });
+                        this.$Loading.service().close();
                       });
                   })
                   .catch(error => {
@@ -174,6 +179,7 @@
                       confirmButtonText: '确定',
                     });
                     console.log(error);
+                    this.$Loading.service().close();
                   });
 
                 // 处理检索数据
@@ -194,6 +200,7 @@
                 confirmButtonText: '确定',
               });
               console.log(error);
+              this.$Loading.service().close();
             });
         }
       }

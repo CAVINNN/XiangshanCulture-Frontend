@@ -13,6 +13,7 @@ import store from './store/store'
 
 Vue.use(ElementUI);
 Vue.use(contextmenu);
+Vue.prototype.$Loading = ElementUI.Loading;
 Vue.prototype.$ajax = axios;
 Vue.prototype.$echarts = echarts;
 
@@ -37,12 +38,6 @@ axios.interceptors.response.use(function (response) {
   }
   return response;
 }, function (error) {
-  // if (error.response.status === 401) {
-  //   store.commit('LOGOUT');
-  //   ElementUI.MessageBox.alert('使用系统前请先登录！', '请登录', {
-  //     confirmButtonText: '确定',
-  //   });
-  // }
   return Promise.reject(error);
 });
 

@@ -34,6 +34,7 @@
         }
       },
       mounted() {
+        this.$Loading.service({ fullscreen: true, background: 'rgba(0, 0, 0, 0.8)' });
         this.$ajax.get(this.appPath + '/getRootClasses')
           .then(res => {
             let object = {};
@@ -46,12 +47,14 @@
               obj.value = val.name;
               this.classes.push(obj);
             });
+            this.$Loading.service().close();
           })
           .catch(error => {
             console.log(error);
             this.$alert('获取类失败！', '错误', {
               confirmButtonText: '确定',
             });
+            this.$Loading.service().close();
           });
         this.$ajax.get(this.appPath + '/getHistoriesByType?type=knowledge')
           .then(res => {
@@ -96,7 +99,7 @@
               obj.historyId = val.historyId;
               tableData.push(obj);
             });
-
+            this.$Loading.service().close();
             this.$emit("listenHistories", tableData);
           })
           .catch(error => {
@@ -104,6 +107,7 @@
             this.$alert('获取历史记录失败！', '错误', {
               confirmButtonText: '确定',
             });
+            this.$Loading.service().close();
           });
       },
       methods: {
@@ -111,12 +115,14 @@
           this.doSearch(this.keyword, this.classVal)
         },
         doSearch(keyword, classVal){
+          this.$Loading.service({ fullscreen: true, background: 'rgba(0, 0, 0, 0.8)' });
           this.$ajax.get(this.appPath + '/queryForKnowledge?individualName=' + keyword + '&scope=' + classVal)
             .then(res => {
               if (res.data.data.nodes === null) {
                 this.$alert('请输入正确的关键词', '无此关键词数据', {
                   confirmButtonText: '确定',
                 });
+                this.$Loading.service().close();
               } else {
                 // 处理历史记录
                 let now = new Date();
@@ -178,6 +184,7 @@
                         this.$alert('更新历史记录失败！', '错误', {
                           confirmButtonText: '确定',
                         });
+                        this.$Loading.service().close();
                       });
                   })
                   .catch(error => {
@@ -185,6 +192,7 @@
                       confirmButtonText: '确定',
                     });
                     console.log(error);
+                    this.$Loading.service().close();
                   });
 
                 // 处理检索响应数据

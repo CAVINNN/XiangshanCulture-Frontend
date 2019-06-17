@@ -245,7 +245,7 @@
             cancelButtonText: '取消',
             type: 'warning'
           }).then(() => {
-            console.log(row.historyId);
+            this.$Loading.service({ fullscreen: true, background: 'rgba(0, 0, 0, 0.8)' });
             this.$ajax.delete(this.appPath + '/deleteHistoryById/' + row.historyId)
               .then(res => {
                 let tblData = this.tableData;
@@ -254,6 +254,7 @@
                     this.tableData.splice(index, 1);
                   }
                 });
+                this.$Loading.service().close();
                 this.$message({
                   type: 'success',
                   message: '删除成功!'
@@ -264,6 +265,7 @@
                   confirmButtonText: '确定',
                 });
                 console.log(error);
+                this.$Loading.service().close();
               });
           }).catch(() => {
 
@@ -291,6 +293,7 @@
 
           this.activeTab = 'graph';
           this.tabsDisabled = false;
+          this.$Loading.service().close();
         },
         getHistories(historiesData) {
           this.tableData = historiesData;

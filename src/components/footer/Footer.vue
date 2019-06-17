@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <p>北京师范大学珠海分校管理学院 Copyright @2018-2019 CAVINNN 版权所有</p>
+    <p>北京师范大学珠海分校管理学院 Copyright @2017-2018 CAVINNN 版权所有</p>
   </div>
 </template>
 
