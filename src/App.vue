@@ -19,7 +19,7 @@
     },
     data() {
       return {
-        appPath: "http://localhost:8080/culture",
+        appPath: "http://localhost:8080",
         componentKey: 0
       }
     },
@@ -70,7 +70,7 @@
 
   html, body {
     margin: 0;
-    background: url("../static/images/background1.jpg") no-repeat;
+    background: url("/static/images/background1.jpg") no-repeat;
     background-size: 1920px 1080px;
     font-family: myFont, sans-serif;
   }
@@ -83,10 +83,10 @@
   {
     font-family: myFont;
     src:
-      url('../static/font/YaHeiLight.ttf'),
-      url('../static/font/YaHeiLight.svg'),
-      url('../static/font/YaHeiLight.eot'),
-      url('../static/font/YaHeiLight.woff');
+      url('/static/font/YaHeiLight.ttf'),
+      url('/static/font/YaHeiLight.svg'),
+      url('/static/font/YaHeiLight.eot'),
+      url('/static/font/YaHeiLight.woff');
   }
 
 </style>

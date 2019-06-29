@@ -4,7 +4,7 @@
     <div class="nav">
 
       <div class="navLogo">
-        <img src="../../../static/images/logo.png" />
+        <img src="/static/images/logo.png" />
       </div>
 
       <div class="navItem">

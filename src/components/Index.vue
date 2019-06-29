@@ -19,11 +19,11 @@
         <h1>登录</h1>
       </div>
       <div class="usernameInput">
-        <embed src="../../static/font/username.svg" width="40" height="40" />
+        <embed src="/static/font/username.svg" width="40" height="40" />
         <el-input v-model="loginData.username" type="text" placeholder="请输入用户名" clearable style="width: 250px" class="username"></el-input>
       </div>
       <div class="passwordInput">
-        <embed src="../../static/font/password.svg" width="40" height="40" />
+        <embed src="/static/font/password.svg" width="40" height="40" />
         <el-input v-model="loginData.password" type="password" placeholder="请输入密码" clearable style="width: 250px" class="password"></el-input>
       </div>
       <p class="forgetPassword">忘记密码？</p>
@@ -74,7 +74,7 @@
       name: "Index",
       data() {
         return {
-          appPath: "http://localhost:8080/culture",
+          appPath: "http://localhost:8080",
           regDialogVisible: false,
           labelWidth: '80px',
           loginData: {
@@ -244,7 +244,7 @@
     border-radius: 10px;
     width: 600px;
     height: 450px;
-    background: url("../../static/images/indexIntro.jpg") no-repeat;
+    background: url("/static/images/indexIntro.jpg") no-repeat;
     opacity: 0.9;
     background-size: 600px 450px;
   }

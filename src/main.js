@@ -29,7 +29,7 @@ axios.interceptors.request.use(function (config) {
 
 // ajax响应拦截器
 axios.interceptors.response.use(function (response) {
-  if (response.request.responseURL !== "http://localhost:8080/culture/admin/isLogin") {
+  if (response.request.responseURL !== "http://localhost:8080/admin/isLogin") {
     if (response.data.code === 401) {
       ElementUI.MessageBox.alert('使用系统前请先登录！', '请登录', {
         confirmButtonText: '确定',

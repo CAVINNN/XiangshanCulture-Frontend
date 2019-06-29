@@ -33,7 +33,7 @@
       },
       data() {
         return {
-          appPath: "http://localhost:8080/culture",
+          appPath: "http://localhost:8080",
           treeProps: {
             children: 'children',
             label: 'label',

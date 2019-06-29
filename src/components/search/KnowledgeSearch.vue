@@ -21,7 +21,7 @@
       name: "KnowledgeSearch",
       data() {
         return {
-          appPath: "http://localhost:8080/culture",
+          appPath: "http://localhost:8080",
           classes: [],
           classVal: '所有类',
           keyword: '',

@@ -12,7 +12,7 @@
       name: "RelationSearch",
       data() {
         return {
-          appPath: "http://localhost:8080/culture",
+          appPath: "http://localhost:8080",
           keyword1: '',
           keyword2: '',
           relationSearchResult: {

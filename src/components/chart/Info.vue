@@ -94,7 +94,7 @@
         this.personalImg.selfUrl = this.personalImg.classUrl;
       },
       relatedWithoutImg(event) {
-        event.target.src = '../../../static/images/infos/香山人物.jpg';
+        event.target.src = '/static/images/infos/香山人物.jpg';
       },
       closeDialog() {
         this.personalImg.selfUrl = '';

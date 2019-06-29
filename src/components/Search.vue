@@ -188,7 +188,7 @@
       },
       data() {
         return {
-          appPath: "http://localhost:8080/culture",
+          appPath: "http://localhost:8080",
           tabsDisabled: false,
           activeTab: 'graph',
           resultOption: {
@@ -219,7 +219,7 @@
             relics: []
           },
           personalImg: {
-            url: '../../../static/images/infos/',
+            url: '/static/images/infos/',
             selfUrl: '',
             classUrl: ''
           }
@@ -444,7 +444,7 @@
           this.personalImg.selfUrl = this.personalImg.classUrl;
         },
         relatedWithoutImg(event) {
-          event.target.src = '../../../static/images/infos/香山人物.jpg';
+          event.target.src = '/static/images/infos/香山人物.jpg';
         },
         closeDialog() {
           this.personalImg.selfUrl = '';

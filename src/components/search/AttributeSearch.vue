@@ -21,7 +21,7 @@
       name: "AttributeSearch",
       data() {
         return {
-          appPath: "http://localhost:8080/culture",
+          appPath: "http://localhost:8080",
           keyword: '',
           attrVal: '',
           attributes: []
